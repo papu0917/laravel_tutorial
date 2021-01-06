@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Cart;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -15,27 +15,34 @@ class ShopController extends Controller
         return view('shop', compact('stocks'));
     }
 
-    public function myCart()
+    public function myCart(Cart $cart)
     {
-        $my_carts = Cart::all();
-        return view('mycart', compact('my_carts'));
+        // $user_id = Auth::id();
+        $data = $cart->showCart();
+        return view('mycart', $data);
     }
 
-    public function addMycart(Request $request)
+    public function addMycart(Request $request, Cart $cart)
     {
-        $user_id = Auth::id();
         $stock_id = $request->stock_id;
+        $message = $cart->addCart($stock_id);
+        $data = $cart->showCart();
 
-        $cart_add_info = Cart::firstOrCreate(['stock_id' => $stock_id, 'user_id' => $user_id]);
+        return view('mycart', $data)->with('message', $message);
+    }
 
-        if ($cart_add_info->wasRecentlyCreated) {
-            $message = 'カートに追加しました';
-        } else {
-            $message = 'カートに登録済みです';
-        }
+    public function deleteCart(Request $request, Cart $cart)
+    {
+        $stock_id = $request->stock_id;
+        $message = $cart->deleteCart($stock_id);
+        $data = $cart->showCart();
 
-        $my_carts = Cart::where('user_id', $user_id)->get();
+        return view('mycart', $data)->with('message', $message);
+    }
 
-        return view('mycart', compact('my_carts', 'message'));
+    public function checkout(Cart $cart)
+    {
+        $checkout_info = $cart->checkoutCart();
+        return view('checkout');
     }
 }
