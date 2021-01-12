@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/checkout', 'ShopController@checkout');
 });
 
-
+Route::get('admin', 'AdminController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
