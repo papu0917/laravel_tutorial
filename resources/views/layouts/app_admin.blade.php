@@ -19,6 +19,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        body {
+            background-color: tomato;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -45,12 +51,13 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" style="color:#fefefe;" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                                <a class="nav-link" style="color:#fefefe;"
+                                    href="{{ route('admin.login') }}">{{ __('ログイン') }}</a>
                             </li>
-                            @if (Route::has('register'))
+                            @if (Route::has('admin.register'))
                                 <li class="nav-item">
                                     <a class="nav-link" style="color:#fefefe;"
-                                        href="{{ route('register') }}">{{ __('会員登録') }}</a>
+                                        href="{{ route('admin.register') }}">{{ __('会員登録') }}</a>
                                 </li>
                             @endif
                         @else
@@ -61,13 +68,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                       document.getElementById('logout-form').submit();">
+                                                                                                                                                       document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
                                         style="display: none;">
                                         @csrf
                                     </form>
@@ -93,19 +100,19 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer class="footer_design">
+        {{-- <footer class="footer_design">
 
             @guest
-                <p class="nav-item" style="display:inline;">
-                    <a class="nav-link" href="{{ route('login') }}"
-                        style="color:#fefefe; display:inline;">{{ __('ログイン') }}</a>
+            <p class="nav-item" style="display:inline;">
+                <a class="nav-link" href="{{ route('admin.login') }}"
+                    style="color:#fefefe; display:inline;">{{ __('ログイン') }}</a>
 
-                    @if (Route::has('register'))
+                @if (Route::has('admin.register'))
 
-                        <a class="nav-link" href="{{ route('register') }}"
-                            style="color:#fefefe; display:inline;">{{ __('会員登録') }}</a>
-                </p>
-                @endif
+                    <a class="nav-link" href="{{ route('admin.register') }}"
+                        style="color:#fefefe; display:inline;">{{ __('会員登録') }}</a>
+            </p>
+            @endif
 
             @endguest
             <br>
@@ -119,7 +126,7 @@
 
     <p style="font-size:0.7em;">@copyright @mukae9</p>
 
-    </footer>
+    </footer> --}}
     </div>
 </body>
 

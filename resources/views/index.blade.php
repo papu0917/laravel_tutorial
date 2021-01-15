@@ -15,7 +15,7 @@
         {{ csrf_field() }}
         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_51I8odPJetjbJWdvbQDr3KC6QH1jzRymuF6Vo2kFhkbvdJgFokoJmBzVcAGKlGZufTdNxlDi3r8FqL1ODURyuhpH60030D9Kwx0"
-            data-amount="500" data-name="Stripe Demo" data-label="決済をする" data-description="これはStripeのデモです。"
+            data-amount="1000" data-name="Stripe Demo" data-label="決済をする" data-description="これはStripeのデモです。"
             data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto"
             data-currency="JPY">
         </script>

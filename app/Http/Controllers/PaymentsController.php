@@ -18,7 +18,7 @@ class PaymentsController extends Controller
     {
         Stripe::setApiKey('sk_test_51I8odPJetjbJWdvb6Yw41wCOEgltvBTz1WR4DRC5l6VFx0cVWvwsHgxPR3aaVVbXux4NpSaqSnxkJvDyDiXfSOIt004leaa3wL');
         $charge = Charge::create(array(
-            'amount' => 500,
+            'amount' => 1000,
             'currency' => 'jpy',
             'source' => request()->stripeToken,
         ));
