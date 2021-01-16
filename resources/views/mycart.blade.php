@@ -17,7 +17,7 @@
                                 {{ number_format($my_cart->stock->fee) }}円 <br>
                                 <img src="/image/{{ $my_cart->stock->imgpath }}" alt="" class="incart">
                                 <br>
-                                <form action="/cartdelete" method="post">
+                                <form action="{{ route('cartdelete') }}" method="post">
                                     @csrf
                                     <input type="hidden" name="delete" value="delete">
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -30,7 +30,7 @@
                             個数：{{ $count }}個<br>
                             <p style="font-size:1.2em; font-weight:bold;">合計金額:{{ number_format($sum) }}円</p>
                         </div>
-                        <form action="/checkout" method="POST">
+                        <form action="{{ route('checkout') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">購入する</button>
                         </form>

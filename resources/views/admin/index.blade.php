@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_admin')
 
 @section('content')
     <div class="container-fluid">
@@ -15,10 +15,11 @@
                                         <h5 class="card-title">{{ $stock->name }}</h5>
                                         <p class="card-price">{{ $stock->fee }}円</p>
                                         <p class="card-text">{{ $stock->detail }}</p>
-                                        <form action="{{ route('mycart') }}" method="post">
+                                        <form action="mycart" method="post">
                                             @csrf
                                             <input type="hidden" name="stock_id" value="{{ $stock->id }}">
-                                            <input type="submit" class="btn btn-primary" value="カートに入れる">
+                                            <input type="submit" class="btn btn-primary" value="編集">
+                                            <input type="submit" class="btn btn-primary" value="削除">
                                         </form>
                                     </div>
                                 </div>

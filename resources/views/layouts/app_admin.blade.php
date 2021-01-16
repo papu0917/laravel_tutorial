@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         body {
-            background-color: tomato;
+            /* background-color: tomato; */
         }
 
     </style>
@@ -29,7 +29,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:#0092b3; color:#fefefe;">
+        <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:tomato; color:#fefefe;">
             <div class="container">
                 <a class="navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -70,7 +70,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                       document.getElementById('logout-form').submit();">
+                                                                                                                                                                               document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
@@ -80,8 +80,8 @@
                                     </form>
 
                                     {{-- 追加 --}}
-                                    <a class="dropdown-item" href="{{ url('/mycart') }}">
-                                        カートを見る
+                                    <a class="dropdown-item" href="{{ url('/') }}">
+                                        LaraShop商品一覧
                                     </a>
                                 </div>
                             </li>

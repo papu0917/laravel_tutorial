@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Stock;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Stock;
 
 class AdminController extends Controller
 {
     public function index()
     {
         $stocks = Stock::Paginate(6);
-        return view('admin/admin', compact('stocks'));
+        return view('admin/index', compact('stocks'));
     }
     public function addAdmin()
     {
