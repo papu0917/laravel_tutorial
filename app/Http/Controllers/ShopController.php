@@ -13,7 +13,7 @@ class ShopController extends Controller
 {
     public function index()
     {
-        $stocks = Stock::Paginate(6);
+        $stocks = Stock::Paginate(12);
         return view('shop', compact('stocks'));
     }
 

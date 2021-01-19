@@ -59,4 +59,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home', 'Admin\HomeController@index')->name('admin.home');
     Route::get('index', 'Admin\AdminController@index')->name('admin.index');
+    Route::get('create', 'Admin\AdminController@create')->name('admin.create');
+    Route::post('store', 'Admin\AdminController@store')->name('admin.store');
+    Route::get('edit', 'Admin\AdminController@edit')->name('admin.edit');
+    Route::post('edit', 'Admin\AdminController@update')->name('admin.edit');
+    Route::post('delete', 'Admin\AdminController@delete')->name('admin.delete');
 });

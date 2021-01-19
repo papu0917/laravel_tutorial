@@ -31,7 +31,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:tomato; color:#fefefe;">
             <div class="container">
-                <a class="navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('/') }}">
+                <a class="navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('admin/index') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -70,7 +70,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                               document.getElementById('logout-form').submit();">
+                                                                                                                                                                                           document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 

@@ -35,10 +35,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
 
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -63,7 +60,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                       document.getElementById('logout-form').submit();">
+                                                                                                                                                                                           document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
@@ -83,8 +80,6 @@
                                 <img src="{{ asset('image/cart.png') }}" class="cart">
                             </a>
                         @endguest
-
-
                     </ul>
                 </div>
             </div>
@@ -94,32 +89,19 @@
             @yield('content')
         </main>
         <footer class="footer_design">
-
             @guest
-                <p class="nav-item" style="display:inline;">
-                    <a class="nav-link" href="{{ route('login') }}"
-                        style="color:#fefefe; display:inline;">{{ __('ログイン') }}</a>
-
-                    @if (Route::has('register'))
-
-                        <a class="nav-link" href="{{ route('register') }}"
-                            style="color:#fefefe; display:inline;">{{ __('会員登録') }}</a>
-                </p>
+                <p class="nav-item" style="display:inline;"></p>
+                <a class="nav-link" href="{{ route('login') }}" style="color:#fefefe; display:inline;">{{ __('ログイン') }}</a>
+                @if (Route::has('register'))
+                    <a class="nav-link" href="{{ route('register') }}"
+                        style="color:#fefefe; display:inline;">{{ __('会員登録') }}</a>
                 @endif
-
             @endguest
-            <br>
             <div style="margin-top:24px;">
-                なんでも売ります<br>
-                <p style="font-size:2.4em">Larashop</p><br>
-                <p style="font-size:1em">お問い合わせはこちら</p><br>
-
+                お問い合わせはこちら
+                <p style="font-size:2.4em">MyShop</p><br>
             </div>
-    </div>
-
-    <p style="font-size:0.7em;">@copyright @mukae9</p>
-
-    </footer>
+        </footer>
     </div>
 </body>
 

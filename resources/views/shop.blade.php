@@ -8,9 +8,10 @@
                 <div class="">
                     <div class="d-flex flex-row flex-wrap">
                         @foreach ($stocks as $stock)
-                            <div class="col-xs-6 col-sm-4 col-md-4 ">
-                                <div class="mycart_box">
-                                    <img src="/image/{{ $stock->imgpath }}" alt="" class="incart">
+                            <div class="col-xs-6 col-sm-4 col-md-3" style="padding: 24px 8px;">
+                                <div class="card" style="width:17rem;">
+                                    <img src="/image/{{ $stock->imgpath }}" alt="" class="bd-placeholder-img card-img-top"
+                                        width="100%" height="180">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $stock->name }}</h5>
                                         <p class="card-price">{{ $stock->fee }}円</p>

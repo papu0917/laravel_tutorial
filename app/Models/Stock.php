@@ -9,4 +9,11 @@ class Stock extends Model
     protected $guarded = [
         'id'
     ];
+
+    public static $rules = array(
+        'name' => 'required',
+        'fee' => 'required',
+        'detail' => 'required',
+        'imgpath' => 'required',
+    );
 }
