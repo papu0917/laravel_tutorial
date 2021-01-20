@@ -43,11 +43,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 |--------------------------------------------------------------------------
 */
 // Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', function () {
-        return redirect('/admin/home');
-    // });
-    Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
-    Route::post('login', 'Admin\LoginController@login');
+//     Route::get('/', function () {
+//         return redirect('/admin/home');
+//     });
+//     Route::get('login', 'Admin\LoginController@showLoginForm')->name('admin.login');
+//     Route::post('login', 'Admin\LoginController@login');
 // });
 
 /*
