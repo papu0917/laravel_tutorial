@@ -58,7 +58,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
 Route::post('logout', 'Admin\LoginController@logout')->name('admin.logout');
 Route::get('home', 'Admin\HomeController@index')->name('admin.home');
-Route::get('index', 'Admin\AdminController@index')->name('admin.index');
+Route::get('admin/index', 'Admin\AdminController@index')->name('admin.index');
 Route::get('create', 'Admin\AdminController@create')->name('admin.create');
 Route::post('store', 'Admin\AdminController@store')->name('admin.store');
 Route::get('edit', 'Admin\AdminController@edit')->name('admin.edit');
