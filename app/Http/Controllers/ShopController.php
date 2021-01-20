@@ -45,6 +45,7 @@ class ShopController extends Controller
     public function checkout(Request $request, Cart $cart)
     {
         $user = Auth::user();
+        //　デプロイ後のエラー箇所
         // $mail_data['user'] = $user->name;
         // $mail_data['checkout_items'] = $cart->checkoutCart();
         // Mail::to($user->email)->send(new Thanks($mail_data));
