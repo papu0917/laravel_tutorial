@@ -1,7 +1,7 @@
 @component('mail::message')
 
     {{ $user }}様<br>
-    この度はLarashopでのご購入ありがとうございます。<br>
+    この度はMyshopでのご購入ありがとうございます。<br>
 
     お客様が購入した商品は<br>
 
