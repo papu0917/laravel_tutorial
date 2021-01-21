@@ -27,7 +27,7 @@ class AdminController extends Controller
 
         // formに画像があれば、保存する
         if (isset($form['image'])) {
-            $path = $request->file('image')->store('public/image');
+            $path = $request->file('imgpath')->store('public/image');
             $stock->imgpath = basename($path);
         } else {
             $stock->imgpath = null;
@@ -69,9 +69,9 @@ class AdminController extends Controller
             $stock_form['imgpath'] = $stock->imgpath;
         }
 
-        // unset($stock_form['imgpath']);
-        // unset($stock_form['remove']);
-        // unset($stock_form['_token']);
+        unset($stock_form['imgpath']);
+        unset($stock_form['remove']);
+        unset($stock_form['_token']);
         // 該当するデータを上書きして保存する
         $stock->fill($stock_form)->save();
         return redirect('admin/index');
