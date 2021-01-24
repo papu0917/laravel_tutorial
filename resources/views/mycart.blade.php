@@ -13,8 +13,8 @@
                     @if ($my_carts->isNotEmpty())
                         @foreach ($my_carts as $my_cart)
                             <div class="mycart_box">
-                                {{ $my_cart->stock->name }} <br>
-                                {{ number_format($my_cart->stock->fee) }}円 <br>
+                                {{ $my_cart->stock->name }}
+                                {{ number_format($my_cart->stock->fee) }}円
                                 <img src="/image/{{ $my_cart->stock->imgpath }}" alt="" class="incart">
                                 <br>
                                 <form action="{{ route('cartdelete') }}" method="post">

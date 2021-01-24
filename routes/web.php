@@ -33,10 +33,16 @@ Route::group(['middleware' => ['auth']], function () {
     // 決済完了ページ
     Route::get('/complete', 'PaymentsController@complete')->name('complete');
 });
+
+Route::post('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+Route::group(['middleware' => ['auth']], function () {
+});
+
+
 Route::get('admin', 'AdminController@index');
-Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/login/guest', 'Auth\LoginController@guestLogin');
+Auth::routes();
+
 
 /*
 |--------------------------------------------------------------------------

@@ -45,7 +45,7 @@ class LoginController extends Controller
         $password = 'guestpass';
 
         if (Auth::attempt(['name' => $name, 'password' => $password])) {
-            return redirect('/home');
+            return redirect('/');
         }
         return redirect('/');
     }
