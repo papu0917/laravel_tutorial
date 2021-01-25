@@ -22,22 +22,21 @@ class AdminController extends Controller
     {
         // dd($request);
         $this->validate($request, Stock::$rules);
-        $stock = new Stock;
-        $form = $request->all();
-
-        // formに画像があれば、保存する
-        if (isset($form['image'])) {
-            $path = $request->file('imgpath')->store('public/image');
-            $stock->imgpath = basename($path);
+        if ($file = $request->imgpath) {
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('image/');
+            $file->move($target_path, $fileName);
         } else {
-            $stock->imgpath = null;
+            $fileName = "";
         }
 
-        unset($form['_token']);
-        unset($form['image']);
-        // データベースに保存する
-        $stock->fill($form);
+        $stock = new Stock;
+        $stock->name = $request->name;
+        $stock->fee = $request->fee;
+        $stock->detail = $request->detail;
+        $stock->imgpath = $fileName;
         $stock->save();
+
         return redirect()->route('admin.index');
     }
 
@@ -59,21 +58,24 @@ class AdminController extends Controller
         // News Modelからデータを取得する
         $stock = Stock::find($request->id);
         // 送信されてきたフォームデータを格納する
-        $stock_form = $request->all();
-        if ($request->remove == 'true') {
-            $stock_form['imgpath'] = null;
-        } elseif ($request->file('image')) {
-            $path = $request->file('image')->store('public/image');
-            $stock_form['imgpath'] = basename($path);
+        // $file = $request->all();
+
+        $new_stock = $request->all();
+        if ($request->remove == 'ture') {
+            $new_stock['imgpath'] = null;
+        } elseif ($request->file('imgpath')) {
+            $path = $request->file('imgpath')->store('image/');
+            $new_stock['imgpath'] = basename($path);
         } else {
-            $stock_form['imgpath'] = $stock->imgpath;
+            $new_stock['imgpath'] = $stock->imgpath;
         }
 
-        unset($stock_form['imgpath']);
-        unset($stock_form['remove']);
-        unset($stock_form['_token']);
+        unset($new_stock['imgpath']);
+        unset($new_stock['remove']);
+        unset($new_stock['_token']);
+
         // 該当するデータを上書きして保存する
-        $stock->fill($stock_form)->save();
+        $stock->fill($new_stock)->save();
         return redirect('admin/index');
     }
 
