@@ -14,12 +14,15 @@
                                         width="100%" height="180">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $stock->name }}</h5>
-                                        <p class="card-price">{{ $stock->fee }}円</p>
+                                        <p class="text-danger card-price">{{ number_format($stock->fee) }}円</p>
                                         <p class="card-text">{{ $stock->detail }}</p>
                                         <form action="{{ route('mycart') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="stock_id" value="{{ $stock->id }}">
-                                            <input type="submit" class="btn btn-primary" value="カートに入れる">
+                                            <div class="text-center">
+                                                <input type="submit" class="col btn btn-danger add-btn btn-rounded"
+                                                    value="カートに入れる">
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
