@@ -49,6 +49,7 @@ class ShopController extends Controller
         // $mail_data['user'] = $user->name;
         // $mail_data['checkout_items'] = $cart->checkoutCart();
         // Mail::to($user->email)->send(new Thanks($mail_data));
+        $checkout_info = $cart->checkoutCart();
         return view('checkout');
     }
 }
