@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center">
-        <img src="http://design-ec.com/d/e_sale_46/e_sale_460_1.jpg">
-    </div>
+    <p>ゲスト</p>
     <div class="container-fluid">
         <div class="">
             <div class="mx-auto" style="max-width:1200px">

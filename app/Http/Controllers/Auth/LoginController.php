@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Stock;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -45,8 +46,14 @@ class LoginController extends Controller
         $password = 'guestpass';
 
         if (Auth::attempt(['name' => $name, 'password' => $password])) {
-            return redirect('/');
+            return redirect('guest/shop');
         }
         return redirect('/');
+    }
+
+    public function shop()
+    {
+        $stocks = Stock::Paginate(12);
+        return view('shop', compact('stocks'));
     }
 }

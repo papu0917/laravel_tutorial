@@ -61,21 +61,15 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('messages.Login') }}
                                     </button>
-
-
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                             {{ __('messages.Forgot Your Password?') }}
                                         </a>
-
                                     @endif
-
-
                                 </div>
-
                             </div>
                         </form>
-                        <form method="POST" action="{{ route('login.guest') }}">
+                        <form method="POST" action="{{ route('guest') }}">
                             @csrf
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4" style="margin-top: 1rem;">

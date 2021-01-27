@@ -19,25 +19,38 @@ class ShopController extends Controller
 
     public function myCart(Cart $cart)
     {
-        // $user_id = Auth::id();
+
+        $user_id = Auth::id();
         $data = $cart->showCart();
+        if ($user_id == 3) {
+            return view('guest/guestCart', $data);
+        }
+
         return view('mycart', $data);
     }
 
     public function addMycart(Request $request, Cart $cart)
     {
+        $user_id = Auth::id();
         $stock_id = $request->stock_id;
         $message = $cart->addCart($stock_id);
         $data = $cart->showCart();
+        if ($user_id == 3) {
+            return view('guest/guestCart', $data)->with('message', $message);
+        }
 
         return view('mycart', $data)->with('message', $message);
     }
 
     public function deleteCart(Request $request, Cart $cart)
     {
+        $user_id = Auth::id();
         $stock_id = $request->stock_id;
         $message = $cart->deleteCart($stock_id);
         $data = $cart->showCart();
+        if ($user_id == 3) {
+            return view('guest/guestCart', $data)->with('message', $message);
+        }
 
         return view('mycart', $data)->with('message', $message);
     }
@@ -45,11 +58,13 @@ class ShopController extends Controller
     public function checkout(Request $request, Cart $cart)
     {
         $user = Auth::user();
+        // $stocks = Stock::Paginate(12);
+        $checkout_info = $cart->checkoutCart();
         //　デプロイ後のエラー箇所
         // $mail_data['user'] = $user->name;
         // $mail_data['checkout_items'] = $cart->checkoutCart();
         // Mail::to($user->email)->send(new Thanks($mail_data));
-        $checkout_info = $cart->checkoutCart();
+
         return view('checkout');
     }
 }

@@ -10959,3 +10959,11 @@ img.incart {
     border-radius: 35px;
 }
 
+li {
+  list-style: none;
+}
+
+.header-list li {
+  float: left;
+  padding: 33px 20px;
+}

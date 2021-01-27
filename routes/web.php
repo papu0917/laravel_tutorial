@@ -20,10 +20,10 @@ Route::get('/', function () {
 Route::get('/', 'ShopController@index');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/mycart', 'ShopController@myCart')->name('mycart');
-    Route::post('/mycart', 'ShopController@addMycart')->name('mycart');
-    Route::post('/cartdelete', 'ShopController@deleteCart')->name('cartdelete');
-    Route::post('/checkout', 'ShopController@checkout')->name('checkout');
+    Route::get('mycart', 'ShopController@myCart')->name('mycart');
+    Route::post('mycart', 'ShopController@addMycart')->name('mycart');
+    Route::post('cartdelete', 'ShopController@deleteCart')->name('cartdelete');
+    Route::post('checkout', 'ShopController@checkout')->name('checkout');
     // 決済ボタンを表示するページ
     Route::get('/index', 'PaymentsController@index')->name('index');
 
@@ -34,7 +34,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/complete', 'PaymentsController@complete')->name('complete');
 });
 
-Route::post('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+Route::post('guest', 'Auth\LoginController@guestLogin')->name('guest');
+Route::get('guest/shop', 'Auth\LoginController@shop')->name('guest.shop');
 Route::group(['middleware' => ['auth']], function () {
 });
 
@@ -42,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('admin', 'AdminController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
+
 
 
 /*

@@ -26,7 +26,8 @@
     <div id="">
         <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:#0092b3; color:#fefefe;">
             <div class="container">
-                <a class="navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('/') }}">
+
+                <a class=" navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('/') }}">
                     {{ config('app.name', 'MyShop') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -36,7 +37,13 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+                    <div class="header-list" style="list-style: none;">
+                        <ul>
+                            <li>MyShopとは</li>
+                            <li>売れ筋商品</li>
+                            <li>お問い合わせ</li>
+                        </ul>
+                    </div>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -61,7 +68,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                               document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                           document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
@@ -99,7 +106,6 @@
                 @endif
             @endguest
             <div style="margin-top:24px;">
-                お問い合わせはこちら
                 <p style="font-size:2.4em">MyShop</p><br>
             </div>
         </footer>
