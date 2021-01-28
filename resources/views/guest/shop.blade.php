@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_guest')
 
 @section('content')
     <p>ゲスト</p>
@@ -17,7 +17,7 @@
                                         <h5 class="card-title">{{ $stock->name }}</h5>
                                         <p class="text-danger card-price">{{ number_format($stock->fee) }}円</p>
                                         <p class="card-text">{{ $stock->detail }}</p>
-                                        <form action="{{ route('mycart') }}" method="post">
+                                        <form action="{{ route('guest.mycart') }}" method="post">
                                             @csrf
                                             <input type="hidden" name="stock_id" value="{{ $stock->id }}">
                                             <div class="text-center">

@@ -48,7 +48,6 @@ class LoginController extends Controller
         if (Auth::attempt(['name' => $name, 'password' => $password])) {
             return redirect('guest/shop');
         }
-        return redirect('/');
     }
 
     public function shop()

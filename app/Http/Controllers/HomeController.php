@@ -27,6 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         $stocks = Stock::Paginate(12);
-        return view('shop', compact('stocks'));
+        $user_id = Auth::id();
+
+        if ($user_id == 3) {
+            return view('guest/shop', compact('stocks'));
+        }
+        return view('/shop', compact('stocks'));
     }
 }
