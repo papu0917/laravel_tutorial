@@ -32,7 +32,7 @@
                     </table>
                 </div>
                 <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
-                    注文内容
+                    ご注文内容
                 </h1>
                 <div class="col-md-12">
                     <div class="row">

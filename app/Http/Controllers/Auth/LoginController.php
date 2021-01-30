@@ -46,13 +46,13 @@ class LoginController extends Controller
         $password = 'guestpass';
 
         if (Auth::attempt(['name' => $name, 'password' => $password])) {
-            return redirect('guest/shop');
+            return redirect('home');
         }
     }
 
-    public function shop()
-    {
-        $stocks = Stock::Paginate(12);
-        return view('shop', compact('stocks'));
-    }
+    // public function shop()
+    // {
+    //     $stocks = Stock::Paginate(12);
+    //     return view('shop', compact('stocks'));
+    // }
 }

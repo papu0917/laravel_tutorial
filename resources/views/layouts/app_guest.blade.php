@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light  shadow-sm" style="background-color:#0092b3; color:#fefefe;">
             <div class="container">
 
-                <a class=" navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('guest/shop') }}">
+                <a class=" navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('home') }}">
                     {{ config('app.name', 'MyShop') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -68,7 +68,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                               document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                   document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
