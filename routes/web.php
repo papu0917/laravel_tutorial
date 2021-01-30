@@ -35,9 +35,8 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-
+Route::post('guest', 'Auth\LoginController@guestLogin')->name('guest');
 Route::group(['prefix' => 'guest', 'middleware' => ['auth']], function () {
-    Route::post('guest', 'Auth\LoginController@guestLogin')->name('guest');
     Route::get('guest/shop', 'Auth\LoginController@shop')->name('guest.shop');
     Route::get('mycart', 'guest\ShopController@myCart')->name('guest.mycart');
     Route::post('mycart', 'guest\ShopController@addMycart')->name('guest.mycart');
