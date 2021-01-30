@@ -35,16 +35,16 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::post('guest', 'Auth\LoginController@guestLogin')->name('guest');
-
 Route::get('guest/shop', 'Auth\LoginController@shop')->name('guest.shop');
-Route::get('guest/mycart', 'guest\ShopController@myCart')->name('guest.mycart');
-Route::post('guest/mycart', 'guest\ShopController@addMycart')->name('guest.mycart');
-Route::post('guest/cartdelete', 'guest\ShopController@deleteCart')->name('guest.cartdelete');
-Route::post('guest/contact', 'guest\ShopController@contact')->name('guest.contact');
-Route::get('guest/contact', 'guest\ShopController@contact')->name('guest.contact');
-Route::post('guest/confirm', 'guest\ShopController@confirm')->name('guest.confirm');
-Route::post('guest/checkout', 'guest\ShopController@checkout')->name('guest.checkout');
-
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('guest/mycart', 'guest\ShopController@myCart')->name('guest.mycart');
+    Route::post('guest/mycart', 'guest\ShopController@addMycart')->name('guest.mycart');
+    Route::post('guest/cartdelete', 'guest\ShopController@deleteCart')->name('guest.cartdelete');
+    Route::post('guest/contact', 'guest\ShopController@contact')->name('guest.contact');
+    Route::get('guest/contact', 'guest\ShopController@contact')->name('guest.contact');
+    Route::post('guest/confirm', 'guest\ShopController@confirm')->name('guest.confirm');
+    Route::post('guest/checkout', 'guest\ShopController@checkout')->name('guest.checkout');
+});
 
 
 Route::get('admin', 'AdminController@index');
