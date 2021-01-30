@@ -34,10 +34,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/complete', 'PaymentsController@complete')->name('complete');
 });
 
-Route::post('guest', 'Auth\LoginController@guestLogin')->name('guest');
-Route::get('guest/shop', 'Auth\LoginController@shop')->name('guest.shop');
+
 
 Route::group(['prefix' => 'guest', 'middleware' => ['auth']], function () {
+    Route::post('guest', 'Auth\LoginController@guestLogin')->name('guest');
+    Route::get('guest/shop', 'Auth\LoginController@shop')->name('guest.shop');
     Route::get('mycart', 'guest\ShopController@myCart')->name('guest.mycart');
     Route::post('mycart', 'guest\ShopController@addMycart')->name('guest.mycart');
     Route::post('cartdelete', 'guest\ShopController@deleteCart')->name('guest.cartdelete');
