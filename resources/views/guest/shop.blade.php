@@ -1,7 +1,11 @@
 @extends('layouts.app_guest')
 
 @section('content')
-    <p>ゲスト</p>
+
+    <div class="text-center">
+        <p>ゲスト</p>
+        <img src="image/e_sale_460_1.jpg">
+    </div>
     <div class="container-fluid">
         <div class="">
             <div class="mx-auto" style="max-width:1200px">

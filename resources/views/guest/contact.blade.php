@@ -1,11 +1,11 @@
 @extends('layouts.app_guest')
 @section('content')
     <div class="container">
-        <h1 style="color:#555555; text-align:center; font-size:1.2em; padding:24px 0px; font-weight:bold;">お届け先を入力してくださ</h1>
+        <h1 style="color:#555555; text-align:center; font-size:1.2em; padding:24px 0px; font-weight:bold;">お届け先を入力してください
+        </h1>
         <div class="row">
             <div class="col-md-8 mx-auto">
-                {{-- <form action="{{ route('admin.store') }}" method="post"
-                    enctype="multipart/form-data"> --}}
+                <form action="{{ route('guest.confirm') }}" method="post" enctype="multipart/form-data">
 
                     @if (count($errors) > 0)
                         <ul>
@@ -16,31 +16,29 @@
                     @endif
                     <div class="form-group row">
                         <label class="col-md-2">氏名</label>
-                        <input type="email" class="form-control" name="name" value="{{ old('name') }}">
+                        <input type="text" class="form-control" name="fullname" value="{{ old('fullname') }}">
                     </div>
                     <div class="form-group row">
                         <label class="col-md-12">郵便番号</label>
-                        <input type="text" class="maxlength=4" name="" value="{{ old('') }}">
-                        <span>-</span>
-                        <input type="text" class="maxlength=4" name="" value="{{ old('') }}">
+                        <input type="text" class="maxlength=4" name="postalcode" value="{{ old('postalcode') }}">
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">住所</label>
-                        <input type="text" class="form-control" name="" value="{{ old('') }}">
+                        <input type="text" class="form-control" name="streetaddres" value="{{ old('streetaddres') }}">
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">電話番号</label>
-                        <input type="text" class="form-control" name="" value="{{ old('') }}">
+                        <input type="text" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}">
                     </div>
                     <div class="form-group row">
                         <label class="col-md-5">メールアドレス</label>
-                        <input type="text" class="form-control" name="" value="{{ old('') }}">
+                        <input type="text" class="form-control" name="mailaddres" value="{{ old('mailaddres') }}">
                     </div>
                     {{ csrf_field() }}
-                    <input type="submit" class="btn btn-primary" value="次へ">
-                    <a href="{{ route('admin.index') }}" role="button" class="btn btn-primary">戻る</a>
-                    {{--
-                </form> --}}
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-primary" value="次へ">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

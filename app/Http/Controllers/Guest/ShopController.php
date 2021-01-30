@@ -54,6 +54,23 @@ class ShopController extends Controller
         return view('guest/contact');
     }
 
+    public function confirm(Request $request, Cart $cart)
+    {
+        $request->validate([
+            'fullname' => 'required',
+            'postalcode' => 'required',
+            'streetaddres' => 'required',
+            'phonenumber' => 'required',
+            'mailaddres' => 'required',
+        ]);
+
+        $inputs = $request->all();
+        $user_id = Auth::id();
+        $data = $cart->showCart();
+
+        return view('guest/confirm', $data, compact('inputs'));
+    }
+
     public function checkout(Request $request, Cart $cart)
     {
         $user_id = Auth::id();

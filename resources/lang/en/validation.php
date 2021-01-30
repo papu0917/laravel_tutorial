@@ -150,7 +150,13 @@ return [
         'name' => '商品名',
         'fee' => '金額',
         'detail' => 'コメント',
-        'imgpath' => '画像'
+        'imgpath' => '画像',
+        'fullname' => '氏名',
+        'postalcode' => '郵便番号',
+        'streetaddres' => '住所',
+        'phonenumber' => '電話番号',
+        'mailaddres' => 'メールアドレス',
+
     ],
 
 ];
