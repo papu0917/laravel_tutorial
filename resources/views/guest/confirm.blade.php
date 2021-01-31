@@ -58,7 +58,7 @@
                     個数：{{ $count }}個<br>
                     <p style="font-size:1.2em; font-weight:bold;">合計金額:{{ number_format($sum) }}円</p>
                 </div>
-                <form action="{{ route('checkout') }}" method="POST">
+                <form action="{{ route('guest.checkout') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">購入して決済へ進む</button>
                 </form>
