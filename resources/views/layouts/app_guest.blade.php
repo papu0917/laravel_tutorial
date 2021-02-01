@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'MyShop') }}</title>
+    <title>{{ config('app.name', 'Portfolio') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -28,7 +28,7 @@
             <div class="container">
 
                 <a class=" navbar-brand" style="color:#fefefe; font-size:1.4em" href="{{ url('home') }}">
-                    {{ config('app.name', 'MyShop') }}
+                    {{ config('app.name', 'Portfolio') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -40,7 +40,6 @@
                     <div class="header-list" style="list-style: none;">
                         <ul>
                             <li>MyShopとは</li>
-                            <li>売れ筋商品</li>
                             <li>お問い合わせ</li>
                         </ul>
                     </div>
@@ -68,7 +67,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                   document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                           document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
@@ -106,7 +105,7 @@
                 @endif
             @endguest
             <div style="margin-top:24px;">
-                <p style="font-size:2.4em">MyShop</p><br>
+                <p style="font-size:2.4em">Portfolio</p><br>
             </div>
         </footer>
     </div>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
+use App\Models\Cart;
 
 class PaymentsController extends Controller
 {
@@ -15,8 +16,9 @@ class PaymentsController extends Controller
         return view('guest/index');
     }
 
-    public function payment(Request $request)
+    public function payment(Request $request, Cart $cart)
     {
+        $data = $cart->showCart();
         Stripe::setApiKey('sk_test_51I8odPJetjbJWdvb6Yw41wCOEgltvBTz1WR4DRC5l6VFx0cVWvwsHgxPR3aaVVbXux4NpSaqSnxkJvDyDiXfSOIt004leaa3wL');
         $charge = Charge::create(array(
             'amount' => 1000,
@@ -24,7 +26,7 @@ class PaymentsController extends Controller
             'source' => request()->stripeToken,
         ));
 
-        return redirect('guest/complete');
+        return redirect('guest/complete', $data);
     }
 
     public function complete()

@@ -37,19 +37,19 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 Route::post('guest', 'Auth\LoginController@guestLogin')->name('guest');
-Route::get('guest/shop', 'Guest\ShopController@index')->name('guest.shop');
-Route::get('guest/mycart', 'Guest\ShopController@myCart')->name('guest.mycart');
-Route::post('guest/mycart', 'Guest\ShopController@addMycart')->name('guest.mycart');
-Route::post('guest/cartdelete', 'Guest\ShopController@deleteCart')->name('guest.cartdelete');
-Route::post('guest/contact', 'Guest\ShopController@contact')->name('guest.contact');
-Route::get('guest/contact', 'Guest\ShopController@contact')->name('guest.contact');
-Route::post('guest/confirm', 'Guest\ShopController@confirm')->name('guest.confirm');
-Route::post('guest/checkout', 'Guest\ShopController@checkout')->name('guest.checkout');
-Route::get('guest/index', 'Guest\PaymentsController@index')->name('guest.index');
-Route::post('guest/payment', 'Guest\PaymentsController@payment')->name('guest.payment');
-Route::get('guest/complete', 'Guest\PaymentsController@complete')->name('guest.complete');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['prefix' => 'guest', 'middleware' => 'auth'], function () {
+    Route::get('shop', 'Guest\ShopController@index')->name('guest.shop');
+    Route::get('mycart', 'Guest\ShopController@myCart')->name('guest.mycart');
+    Route::post('mycart', 'Guest\ShopController@addMycart')->name('guest.mycart');
+    Route::post('cartdelete', 'Guest\ShopController@deleteCart')->name('guest.cartdelete');
+    Route::post('contact', 'Guest\ShopController@contact')->name('guest.contact');
+    Route::get('contact', 'Guest\ShopController@contact')->name('guest.contact');
+    Route::post('confirm', 'Guest\ShopController@confirm')->name('guest.confirm');
+    Route::post('checkout', 'Guest\ShopController@checkout')->name('guest.checkout');
+    Route::get('index', 'Guest\PaymentsController@index')->name('guest.index');
+    Route::post('payment', 'Guest\PaymentsController@payment')->name('guest.payment');
+    Route::get('complete', 'Guest\PaymentsController@complete')->name('guest.complete');
 });
 
 
