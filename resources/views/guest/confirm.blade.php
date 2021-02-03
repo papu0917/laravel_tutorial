@@ -47,7 +47,6 @@
                                 <thead>
                                     <tr>
                                         <th width="50%">商品名</th>
-                                        <th>数量</th>
                                         <th>金額</th>
                                     </tr>
                                 </thead>
@@ -55,7 +54,6 @@
                                     @foreach ($my_carts as $my_cart)
                                         <tr>
                                             <th>{{ $my_cart->stock->name }}</th>
-                                            <th>0</th>
                                             <th>{{ number_format($my_cart->stock->fee) }}円</th>
                                             <input type="hidden" name="stock_name[]" value="{{ $my_cart->stock->name }}">
                                             <input type="hidden" name="fee" value="{{ $my_cart->stock->fee }}">
