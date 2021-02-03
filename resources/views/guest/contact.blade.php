@@ -16,7 +16,7 @@
                     @endif
                     <div class="form-group row">
                         <label class="col-md-2">氏名</label>
-                        <input type="text" class="form-control" name="fullname" value="{{ old('fullname') }}">
+                        <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                     </div>
                     <div class="form-group row">
                         <label class="col-md-12">郵便番号</label>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-md-5">メールアドレス</label>
-                        <input type="text" class="form-control" name="mailaddres" value="{{ old('mailaddres') }}">
+                        <input type="text" class="form-control" name="email" value="{{ old('email') }}">
                     </div>
                     {{ csrf_field() }}
                     <div class="text-center">

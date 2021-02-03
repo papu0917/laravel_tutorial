@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Models\Stock;
+use App\Models\Order;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -57,11 +58,11 @@ class ShopController extends Controller
     public function confirm(Request $request, Cart $cart)
     {
         $request->validate([
-            'fullname' => 'required',
+            'name' => 'required',
             'postalcode' => 'required',
             'streetaddres' => 'required',
             'phonenumber' => 'required',
-            'mailaddres' => 'required',
+            'email' => 'required',
         ]);
 
         $inputs = $request->all();
@@ -73,9 +74,22 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart)
     {
+        // dd($request);
         $user_id = Auth::id();
-
         $checkout_info = $cart->checkoutCart();
+
+        // $order = new Order;
+        // $order->stock_name = $request->stock_name;
+        // $order->fee = $request->fee;
+        // $order->name = $request->name;
+        // $order->postalcode = $request->postalcode;
+        // $order->streetaddres = $request->streetaddres;
+        // $order->email = $request->email;
+        // $order->phonenumber = $request->phonenumber;
+        // $order->serialize();
+        // $order->save();
+        // $order->attach($request->fee);
+
         //　デプロイ後のエラー箇所
         // $mail_data['user'] = $user->name;
         // $mail_data['checkout_items'] = $cart->checkoutCart();

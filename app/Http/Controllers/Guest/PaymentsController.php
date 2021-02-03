@@ -16,9 +16,8 @@ class PaymentsController extends Controller
         return view('guest/index');
     }
 
-    public function payment(Request $request, Cart $cart)
+    public function payment(Request $request)
     {
-        $data = $cart->showCart();
         Stripe::setApiKey('sk_test_51I8odPJetjbJWdvb6Yw41wCOEgltvBTz1WR4DRC5l6VFx0cVWvwsHgxPR3aaVVbXux4NpSaqSnxkJvDyDiXfSOIt004leaa3wL');
         $charge = Charge::create(array(
             'amount' => 1000,
@@ -26,7 +25,7 @@ class PaymentsController extends Controller
             'source' => request()->stripeToken,
         ));
 
-        return redirect('guest/complete', $data);
+        return redirect('guest/complete');
     }
 
     public function complete()
