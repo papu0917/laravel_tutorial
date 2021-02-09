@@ -16,12 +16,10 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('streetaddres');
-            $table->string('email')->unique();
-            $table->string('stock_name');
-            $table->integer('postalcode');
-            $table->integer('phonenumber');
-            $table->integer('fee');
+            $table->string('postcode');
+            $table->string('addres');
+            $table->string('email');
+            $table->string('phone');
             $table->timestamps();
         });
     }

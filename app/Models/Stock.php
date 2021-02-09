@@ -15,5 +15,11 @@ class Stock extends Model
         'fee' => 'required',
         'detail' => 'required',
         'imgpath' => 'required',
+        'stock_id' => 'required',
     );
+
+    public function orders()
+    {
+        return $this->belongsToMany('App\Models\Order', 'order_stock');
+    }
 }

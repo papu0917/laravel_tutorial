@@ -59,9 +59,9 @@ class ShopController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'postalcode' => 'required',
-            'streetaddres' => 'required',
-            'phonenumber' => 'required',
+            'postcode' => 'required',
+            'addres' => 'required',
+            'phone' => 'required',
             'email' => 'required',
         ]);
 
@@ -74,22 +74,16 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart)
     {
-        // dd($request);
-        $user_id = Auth::id();
+        $order = new Order;
+        $order->name = $request->name;
+        $order->postcode = $request->postcode;
+        $order->addres = $request->addres;
+        $order->phone = $request->phone;
+        $order->email = $request->email;
+        $order->save();
+        $order->stocks()->attach($request->stock_id);
+
         $checkout_info = $cart->checkoutCart();
-
-        // $order = new Order;
-        // $order->stock_name = $request->stock_name;
-        // $order->fee = $request->fee;
-        // $order->name = $request->name;
-        // $order->postalcode = $request->postalcode;
-        // $order->streetaddres = $request->streetaddres;
-        // $order->email = $request->email;
-        // $order->phonenumber = $request->phonenumber;
-        // $order->serialize();
-        // $order->save();
-        // $order->attach($request->fee);
-
         //　デプロイ後のエラー箇所
         // $mail_data['user'] = $user->name;
         // $mail_data['checkout_items'] = $cart->checkoutCart();

@@ -8,7 +8,6 @@
                     お届け先
                 </h1>
                 <form action="{{ route('guest.checkout') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
                     <div class="col-md-12">
                         <table border=1 align="center" width="60%">
                             <tr>
@@ -18,18 +17,18 @@
                             </tr>
                             <tr>
                                 <th class="text-center">郵便番号</th>
-                                <td class="text-center">{{ $inputs['postalcode'] }}</td>
-                                <input type="hidden" name="postalcode" value="{{ $inputs['postalcode'] }}">
+                                <td class="text-center">{{ $inputs['postcode'] }}</td>
+                                <input type="hidden" name="postcode" value="{{ $inputs['postcode'] }}">
                             </tr>
                             <tr>
                                 <th class="text-center">お届け先</th>
-                                <td class="text-center">{{ $inputs['streetaddres'] }}</td>
-                                <input type="hidden" name="streetaddres" value="{{ $inputs['streetaddres'] }}">
+                                <td class="text-center">{{ $inputs['addres'] }}</td>
+                                <input type="hidden" name="addres" value="{{ $inputs['addres'] }}">
                             </tr>
                             <tr>
                                 <th class="text-center">電話番号</th>
-                                <td class="text-center">{{ $inputs['phonenumber'] }}</td>
-                                <input type="hidden" name="phonenumber" value="{{ $inputs['phonenumber'] }}">
+                                <td class="text-center">{{ $inputs['phone'] }}</td>
+                                <input type="hidden" name="phone" value="{{ $inputs['phone'] }}">
                             </tr>
                             <tr>
                                 <th class="text-center">メールアドレス</th>
@@ -55,8 +54,9 @@
                                         <tr>
                                             <th>{{ $my_cart->stock->name }}</th>
                                             <th>{{ number_format($my_cart->stock->fee) }}円</th>
-                                            <input type="hidden" name="stock_name[]" value="{{ $my_cart->stock->name }}">
-                                            <input type="hidden" name="fee" value="{{ $my_cart->stock->fee }}">
+                                            <input type="hidden" name="stock_id[]" value="{{ $my_cart->stock->id }}">
+                                            {{-- <input type="hidden" name="fee"
+                                                value="{{ $my_cart->stock->fee }}"> --}}
                                         </tr>
                                     @endforeach
 
@@ -68,7 +68,7 @@
                         個数：{{ $count }}個<br>
                         <p style="font-size:1.2em; font-weight:bold;">合計金額:{{ number_format($sum) }}円</p>
                     </div>
-
+                    @csrf
                     <button type="submit" class="btn btn-danger btn-lg text-center buy-btn">購入して決済へ進む</button>
                 </form>
             </div>

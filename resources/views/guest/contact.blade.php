@@ -20,15 +20,15 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-md-12">郵便番号</label>
-                        <input type="text" class="maxlength=4" name="postalcode" value="{{ old('postalcode') }}">
+                        <input type="text" class="maxlength=4" name="postcode" value="{{ old('postcode') }}">
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">住所</label>
-                        <input type="text" class="form-control" name="streetaddres" value="{{ old('streetaddres') }}">
+                        <input type="text" class="form-control" name="addres" value="{{ old('addres') }}">
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">電話番号</label>
-                        <input type="text" class="form-control" name="phonenumber" value="{{ old('phonenumber') }}">
+                        <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
                     </div>
                     <div class="form-group row">
                         <label class="col-md-5">メールアドレス</label>

@@ -10,6 +10,12 @@ class Order extends Model
         'id'
     ];
 
+    protected $fillable = [
+        'name', 'postcode', 'addres', 'phone', 'email', 'stock_id'
+    ];
+
+
+
     public static $rules = [
         'fullname' => 'required',
         'fee' => 'required',
@@ -20,8 +26,8 @@ class Order extends Model
         'postalcode' => 'required',
     ];
 
-    public function orders()
+    public function stocks()
     {
-        return $this->hasMany('App\Models\Order');
+        return  $this->belongsToMany('App\\Models\Stock', 'order_stock');
     }
 }
