@@ -26,6 +26,54 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="postcode"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('messages.postcode') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="postcode" type="text"
+                                        class="form-control @error('podtcode') is-invalid @enderror" name="postcode"
+                                        value="{{ old('postcode') }}" required autocomplete="postcode" autofocus>
+
+                                    @error('postcode')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="addres"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('messages.addres') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="addres" type="text"
+                                        class="form-control @error('podtcode') is-invalid @enderror" name="addres"
+                                        value="{{ old('addres') }}" required autocomplete="addres" autofocus>
+
+                                    @error('addres')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="phone"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('messages.phone') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="phone" type="text"
+                                        class="form-control @error('podtcode') is-invalid @enderror" name="phone"
+                                        value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+
+                                    @error('phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label for="email"
