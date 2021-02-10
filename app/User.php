@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'addres', 'phone', 'postcode',
+        'name', 'email', 'password', 'addres', 'phone', 'postcode', 'stock_id',
     ];
 
     /**
@@ -27,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function stocks()
+    {
+        return $this->belongsToMany('App\Models\stock', 'user_stock');
+    }
 }

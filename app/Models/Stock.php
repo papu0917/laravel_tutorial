@@ -22,4 +22,9 @@ class Stock extends Model
     {
         return $this->belongsToMany('App\Models\Order', 'order_stock');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'user_stock');
+    }
 }

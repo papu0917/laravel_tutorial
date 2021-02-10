@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Cart;
+use App\Models\Order;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Thanks;
@@ -55,14 +57,28 @@ class ShopController extends Controller
         return view('mycart', $data)->with('message', $message);
     }
 
+    public function confirm(Request $request, Cart $cart)
+    {
+        $user_info = Auth::user();
+
+        return view('confirm', compact('user_info'));
+    }
+
     public function checkout(Request $request, Cart $cart)
     {
+        // dd($request);
+        // dd($request);
         $user_id = Auth::id();
-        // $stocks = Stock::Paginate(12);i
-        // if ($user_id == 3) {
-        //     return view('guest/guestInformation');
-        // }
+        $order = new Order;
+        $order->name = $request->name;
+        $order->postcode = $request->postcode;
+        $order->addres = $request->addres;
+        $order->phone = $request->phone;
+        $order->email = $request->email;
+        $order->save();
+
         $checkout_info = $cart->checkoutCart();
+
         //　デプロイ後のエラー箇所
         // $mail_data['user'] = $user->name;
         // $mail_data['checkout_items'] = $cart->checkoutCart();
