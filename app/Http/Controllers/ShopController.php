@@ -24,9 +24,6 @@ class ShopController extends Controller
 
         $user_id = Auth::id();
         $data = $cart->showCart();
-        // if ($user_id == 3) {
-        //     return view('guest/guestCart', $data);
-        // }
 
         return view('mycart', $data);
     }
@@ -37,9 +34,6 @@ class ShopController extends Controller
         $stock_id = $request->stock_id;
         $message = $cart->addCart($stock_id);
         $data = $cart->showCart();
-        // if ($user_id == 3) {
-        //     return view('guest/guestCart', $data)->with('message', $message);
-        // }
 
         return view('mycart', $data)->with('message', $message);
     }
@@ -50,9 +44,6 @@ class ShopController extends Controller
         $stock_id = $request->stock_id;
         $message = $cart->deleteCart($stock_id);
         $data = $cart->showCart();
-        // if ($user_id == 3) {
-        //     return view('guest/guestCart', $data)->with('message', $message);
-        // }
 
         return view('mycart', $data)->with('message', $message);
     }
@@ -60,8 +51,9 @@ class ShopController extends Controller
     public function confirm(Request $request, Cart $cart)
     {
         $user_info = Auth::user();
+        $data = $cart->showCart();
 
-        return view('confirm', compact('user_info'));
+        return view('confirm', $data, compact('user_info'));
     }
 
     public function checkout(Request $request, Cart $cart)
@@ -76,6 +68,7 @@ class ShopController extends Controller
         $order->phone = $request->phone;
         $order->email = $request->email;
         $order->save();
+        $order->stocks()->attach($request->stock_id);
 
         $checkout_info = $cart->checkoutCart();
 

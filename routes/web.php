@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('mycart', 'ShopController@addMycart')->name('mycart');
     Route::post('cartdelete', 'ShopController@deleteCart')->name('cartdelete');
     Route::get('confirm', 'ShopController@confirm')->name('confirm');
+    Route::post('confirm', 'ShopController@confirm')->name('confirm');
     Route::post('checkout', 'ShopController@checkout')->name('checkout');
     // Route::post('checkout', 'ShopController@checkout')->name('checkout');
     // 決済ボタンを表示するページ

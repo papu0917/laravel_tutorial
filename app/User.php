@@ -30,6 +30,6 @@ class User extends Authenticatable
 
     public function stocks()
     {
-        return $this->belongsToMany('App\Models\stock', 'user_stock');
+        return $this->belongsToMany('App\Models\stock', 'order_stock');
     }
 }

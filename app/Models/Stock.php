@@ -25,6 +25,6 @@ class Stock extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User', 'user_stock');
+        return $this->belongsToMany('App\User', 'order_stock');
     }
 }
