@@ -74,6 +74,7 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart)
     {
+        $order = 0;
         $order = new Order;
         $order->name = $request->name;
         $order->postcode = $request->postcode;
