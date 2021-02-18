@@ -30,4 +30,18 @@ class Order extends Model
     {
         return  $this->belongsToMany('App\\Models\Stock', 'order_stock');
     }
+
+    public static function completeOrder($request)
+    {
+        $order = new Order;
+        $order->name = $request->name;
+        $order->postcode = $request->postcode;
+        $order->addres = $request->addres;
+        $order->phone = $request->phone;
+        $order->email = $request->email;
+        $order->save();
+        $order->stocks()->attach($request->stock_id);
+
+        return $order;
+    }
 }

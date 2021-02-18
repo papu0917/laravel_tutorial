@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card" style="margin-bottom: 20px;">
                     <div class="card-header">{{ __('messages.Login') }}</div>
 
                     <div class="card-body">
@@ -69,6 +69,12 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">登録しないでお買い物</div>
+                    <div class="card-body">
                         <form method="POST" action="{{ route('guest') }}">
                             @csrf
                             <div class="form-group row mb-0">
@@ -80,6 +86,7 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>

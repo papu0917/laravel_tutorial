@@ -72,19 +72,11 @@ class ShopController extends Controller
         return view('guest/confirm', $data, compact('inputs'));
     }
 
-    public function checkout(Request $request, Cart $cart)
+    public function checkout(Request $request, Cart $cart, Order $order)
     {
-        $order = 0;
-        $order = new Order;
-        $order->name = $request->name;
-        $order->postcode = $request->postcode;
-        $order->addres = $request->addres;
-        $order->phone = $request->phone;
-        $order->email = $request->email;
-        $order->save();
-        $order->stocks()->attach($request->stock_id);
-
+        $completeOrder = $order->completeOrder($request);
         $checkout_info = $cart->checkoutCart();
+
         //　デプロイ後のエラー箇所
         // $mail_data['user'] = $user->name;
         // $mail_data['checkout_items'] = $cart->checkoutCart();
