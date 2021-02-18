@@ -31,7 +31,7 @@ class Order extends Model
         return  $this->belongsToMany('App\\Models\Stock', 'order_stock');
     }
 
-    public static function completeOrder($request)
+    public function completeOrder($request)
     {
         $order = new Order;
         $order->name = $request->name;
