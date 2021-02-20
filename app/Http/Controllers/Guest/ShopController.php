@@ -57,12 +57,13 @@ class ShopController extends Controller
 
     public function confirm(Request $request, Cart $cart)
     {
+        // phone,postcodeのハイフンをどう使うか考え中
         $request->validate([
-            'name' => 'required',
-            'postcode' => 'required',
+            'name' => 'required|max:255',
+            'postcode' => 'required|max:8',
             'addres' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
+            'phone' => 'required|max:11',
+            'email' => 'required|email',
         ]);
 
         $inputs = $request->all();
@@ -74,6 +75,15 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart, Order $order)
     {
+        // confirmのバリデーションと同じなので処理を共通化したい。
+        $request->validate([
+            'name' => 'required|max:255',
+            'postcode' => 'required|max:8',
+            'addres' => 'required',
+            'phone' => 'required|max:11',
+            'email' => 'required|email',
+        ]);
+
         $completeOrder = $order->completeOrder($request);
         $checkout_info = $cart->checkoutCart();
 
