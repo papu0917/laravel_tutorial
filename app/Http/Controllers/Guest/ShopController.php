@@ -22,7 +22,6 @@ class ShopController extends Controller
     public function myCart(Cart $cart)
     {
 
-        $user_id = Auth::id();
         $data = $cart->showCart();
 
         return view('guest/mycart', $data);
@@ -30,7 +29,6 @@ class ShopController extends Controller
 
     public function addMycart(Request $request, Cart $cart)
     {
-        $user_id = Auth::id();
         $stock_id = $request->stock_id;
         $message = $cart->addCart($stock_id);
         $data = $cart->showCart();
@@ -41,11 +39,9 @@ class ShopController extends Controller
 
     public function deleteCart(Request $request, Cart $cart)
     {
-        $user_id = Auth::id();
         $stock_id = $request->stock_id;
         $message = $cart->deleteCart($stock_id);
         $data = $cart->showCart();
-
 
         return view('guest/mycart', $data)->with('message', $message);
     }
@@ -58,14 +54,7 @@ class ShopController extends Controller
     public function confirm(Request $request, Cart $cart)
     {
         // phone,postcodeのハイフンをどう使うか考え中
-        $request->validate([
-            'name' => 'required|max:255',
-            'postcode' => 'required|max:8',
-            'addres' => 'required',
-            'phone' => 'required|max:11',
-            'email' => 'required|email',
-        ]);
-
+        $request->validate(Order::$rules);
         $inputs = $request->all();
         $user_id = Auth::id();
         $data = $cart->showCart();
@@ -75,15 +64,8 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart, Order $order)
     {
-        // confirmのバリデーションと同じなので処理を共通化したい。
-        $request->validate([
-            'name' => 'required|max:255',
-            'postcode' => 'required|max:8',
-            'addres' => 'required',
-            'phone' => 'required|max:11',
-            'email' => 'required|email',
-        ]);
-
+        // TODO: トランザクション調べる
+        $request->validate(Order::$rules);
         $completeOrder = $order->completeOrder($request);
         $checkout_info = $cart->checkoutCart();
 
