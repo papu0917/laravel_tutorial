@@ -18,9 +18,13 @@ class Stock extends Model
         'stock_id' => 'required',
     );
 
+    protected $fillable = [
+        'fee',
+    ];
+
     public function orders()
     {
-        return $this->belongsToMany('App\Models\Order', 'order_stock');
+        return $this->belongsToMany('App\Models\Order', 'order_stock_fee');
     }
 
     public function users()

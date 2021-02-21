@@ -12,7 +12,7 @@ return [
     'Forgot Your Password?' => 'パスワードをお忘れの方',
     'Reset Password' => 'メールアドレスの変更',
     'Send Password Reset Link' => 'リンクを送る',
-    'Guest Login' => '登録しないでお買い物',
+    'Guest Login' => 'ゲストユーザーログイン',
     'postcode' => '郵便番号',
     'addres' => '住所',
     'phone' => '電話番号'

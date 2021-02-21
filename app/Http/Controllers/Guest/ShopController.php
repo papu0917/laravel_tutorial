@@ -22,7 +22,6 @@ class ShopController extends Controller
     public function myCart(Cart $cart)
     {
 
-        $user_id = Auth::id();
         $data = $cart->showCart();
 
         return view('guest/mycart', $data);
@@ -30,7 +29,6 @@ class ShopController extends Controller
 
     public function addMycart(Request $request, Cart $cart)
     {
-        $user_id = Auth::id();
         $stock_id = $request->stock_id;
         $message = $cart->addCart($stock_id);
         $data = $cart->showCart();
@@ -41,11 +39,9 @@ class ShopController extends Controller
 
     public function deleteCart(Request $request, Cart $cart)
     {
-        $user_id = Auth::id();
         $stock_id = $request->stock_id;
         $message = $cart->deleteCart($stock_id);
         $data = $cart->showCart();
-
 
         return view('guest/mycart', $data)->with('message', $message);
     }
@@ -57,14 +53,8 @@ class ShopController extends Controller
 
     public function confirm(Request $request, Cart $cart)
     {
-        $request->validate([
-            'name' => 'required',
-            'postcode' => 'required',
-            'addres' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-        ]);
-
+        // phone,postcodeのハイフンをどう使うか考え中
+        $request->validate(Order::$rules);
         $inputs = $request->all();
         $user_id = Auth::id();
         $data = $cart->showCart();
@@ -72,18 +62,13 @@ class ShopController extends Controller
         return view('guest/confirm', $data, compact('inputs'));
     }
 
-    public function checkout(Request $request, Cart $cart)
+    public function checkout(Request $request, Cart $cart, Order $order)
     {
-        $order = new Order;
-        $order->name = $request->name;
-        $order->postcode = $request->postcode;
-        $order->addres = $request->addres;
-        $order->phone = $request->phone;
-        $order->email = $request->email;
-        $order->save();
-        $order->stocks()->attach($request->stock_id);
-
+        // TODO: トランザクション調べる
+        $request->validate(Order::$rules);
+        $completeOrder = $order->completeOrder($request);
         $checkout_info = $cart->checkoutCart();
+
         //　デプロイ後のエラー箇所
         // $mail_data['user'] = $user->name;
         // $mail_data['checkout_items'] = $cart->checkoutCart();
