@@ -12,7 +12,7 @@ class Order extends Model
     ];
 
     protected $fillable = [
-        'name', 'postcode', 'addres', 'phone', 'email', 'stock_id', 'fee',
+        'name', 'postcode', 'addres', 'phone', 'email', 'stock_id', 'total_prices',
     ];
 
 
@@ -34,12 +34,10 @@ class Order extends Model
 
     public function stocks()
     {
-        return  $this->belongsToMany('App\\Models\Stock', 'order_stock');
+        return  $this->belongsToMany('App\\Models\Stock', 'order_stock', 'order_total_prices');
     }
 
-
-
-    public function completeOrder(Request $request): self
+    public function completeOrder(Request $request)
     {
         $order = new Order;
         $order->name = $request->name;
@@ -49,7 +47,14 @@ class Order extends Model
         $order->email = $request->email;
         $order->save();
         $order->stocks()->attach($request->stock_id);
-
+        $order->stocks()->attach($request->total_prices);
         return $order;
     }
+
+    // public function totalprice(Request $request)
+    // {
+    //     $totalPrice = $this->totalPrices()->attach($request->total_prices);
+
+    //     return $totalPrice;
+    // }
 }

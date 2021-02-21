@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderStockFeeTable extends Migration
+class CreateOrderTotalPricesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateOrderStockFeeTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_stock_fee', function (Blueprint $table) {
+        Schema::create('order_total_prices', function (Blueprint $table) {
             $table->bigincrements('id');
             $table->unsignedInteger('order_id');
-            $table->unsignedInteger('stock_id');
-            $table->unsignedInteger('fee');
-            $table->timestamps();
-
-            $table->index('order_id');
-            $table->index('stock_id');
-            $table->index('fee');
+            $table->unsignedInteger('total_prices');
+            $table->timestamp('updated_at')->useCurrent()->nullable();
+            $table->timestamp('created_at')->useCurrent()->nullable();
         });
     }
 
@@ -33,6 +29,6 @@ class CreateOrderStockFeeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_stock_fee');
+        Schema::dropIfExists('order_total_prices');
     }
 }

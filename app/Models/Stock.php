@@ -18,9 +18,7 @@ class Stock extends Model
         'stock_id' => 'required',
     );
 
-    protected $fillable = [
-        'fee',
-    ];
+
 
     public function orders()
     {

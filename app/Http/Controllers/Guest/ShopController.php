@@ -66,6 +66,7 @@ class ShopController extends Controller
     {
         // TODO: トランザクション調べる
         $request->validate(Order::$rules);
+        // $totalPrice = $order->totalprice($request);
         $completeOrder = $order->completeOrder($request);
         $checkout_info = $cart->checkoutCart();
 

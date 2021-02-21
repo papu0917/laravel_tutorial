@@ -55,7 +55,7 @@
                                             <th>{{ $my_cart->stock->name }}</th>
                                             <th>{{ number_format($my_cart->stock->fee) }}円</th>
                                             <input type="hidden" name="stock_id[]" value="{{ $my_cart->stock->id }}">
-                                            <input type="hidden" name="fee" value="{{ $sum }}">
+                                            <input type="hidden" name="total_prices" value="{{ $sum }}">
                                         </tr>
                                     @endforeach
 
