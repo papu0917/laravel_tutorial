@@ -34,7 +34,12 @@ class Order extends Model
 
     public function stocks()
     {
-        return  $this->belongsToMany('App\\Models\Stock', 'order_stock', 'order_total_prices');
+        return  $this->belongsToMany('App\\Models\Stock', 'order_stock', 'order_id', 'stock_id');
+    }
+
+    public function totalPrice()
+    {
+        return  $this->belongsToMany('App\\Models\Stock', 'order_total_Prices', 'order_id', 'total_prices');
     }
 
     public function completeOrder(Request $request)
@@ -47,14 +52,6 @@ class Order extends Model
         $order->email = $request->email;
         $order->save();
         $order->stocks()->attach($request->stock_id);
-        $order->stocks()->attach($request->total_prices);
-        return $order;
+        $order->totalPrice()->attach($request->total_prices);
     }
-
-    // public function totalprice(Request $request)
-    // {
-    //     $totalPrice = $this->totalPrices()->attach($request->total_prices);
-
-    //     return $totalPrice;
-    // }
 }

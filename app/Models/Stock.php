@@ -22,7 +22,12 @@ class Stock extends Model
 
     public function orders()
     {
-        return $this->belongsToMany('App\Models\Order', 'order_stock_fee');
+        return $this->belongsToMany('App\Models\Order', 'order_stock');
+    }
+
+    public function orderPrices()
+    {
+        return $this->belongsToMany('App\Models\Order', 'order_total_prices');
     }
 
     public function users()
