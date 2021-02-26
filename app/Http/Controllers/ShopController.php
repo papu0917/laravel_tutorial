@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Cart;
+use App\Models\Member;
 use App\Models\Order;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -56,18 +57,26 @@ class ShopController extends Controller
         return view('confirm', $data, compact('user_info'));
     }
 
-    public function checkout(Request $request, Cart $cart, User $user)
+    public function checkout(Request $request, Cart $cart, Member $member)
     {
-        $user_id = Auth::id();
-        $order = new Order;
+        $order = new Member;
         $order->name = $request->name;
         $order->postcode = $request->postcode;
         $order->addres = $request->addres;
         $order->phone = $request->phone;
         $order->email = $request->email;
         $order->save();
-        $order->stocks()->attach($request->stock_id);
-        $user->stocks()->attach($request->stock_id);
+
+        // $user_id = Auth::id();
+        // $order = new Order;
+        // $order->name = $request->name;
+        // $order->postcode = $request->postcode;
+        // $order->addres = $request->addres;
+        // $order->phone = $request->phone;
+        // $order->email = $request->email;
+        // $order->save();
+        // $order->stocks()->attach($request->stock_id);
+        // $user->stocks()->attach($request->stock_id);
 
         // $order->usersId()->attach($request->stock_id)
         $checkout_info = $cart->checkoutCart();
