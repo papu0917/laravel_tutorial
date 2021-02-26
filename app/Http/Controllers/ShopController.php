@@ -56,7 +56,7 @@ class ShopController extends Controller
         return view('confirm', $data, compact('user_info'));
     }
 
-    public function checkout(Request $request, Cart $cart)
+    public function checkout(Request $request, Cart $cart, User $user)
     {
         $user_id = Auth::id();
         $order = new Order;
@@ -67,7 +67,9 @@ class ShopController extends Controller
         $order->email = $request->email;
         $order->save();
         $order->stocks()->attach($request->stock_id);
+        $user->stocks()->attach($request->stock_id);
 
+        // $order->usersId()->attach($request->stock_id)
         $checkout_info = $cart->checkoutCart();
 
         //　デプロイ後のエラー箇所

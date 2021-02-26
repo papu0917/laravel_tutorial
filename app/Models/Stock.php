@@ -18,7 +18,9 @@ class Stock extends Model
         'stock_id' => 'required',
     );
 
-
+    protected $fillable = [
+        'name', 'email', 'password', 'addres', 'phone', 'postcode', 'stock_id', 'user_id',
+    ];
 
     public function orders()
     {
@@ -28,10 +30,5 @@ class Stock extends Model
     public function orderPrices()
     {
         return $this->belongsToMany('App\Models\Order', 'order_total_prices');
-    }
-
-    public function users()
-    {
-        return $this->belongsToMany('App\User', 'order_stock');
     }
 }

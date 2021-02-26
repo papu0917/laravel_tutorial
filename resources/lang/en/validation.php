@@ -147,7 +147,7 @@ return [
     */
 
     'attributes' => [
-        'name' => '商品名',
+        'name' => '氏名',
         'fee' => '金額',
         'detail' => 'コメント',
         'imgpath' => '画像',
@@ -156,7 +156,10 @@ return [
         'streetaddres' => '住所',
         'phonenumber' => '電話番号',
         'mailaddres' => 'メールアドレス',
-
+        'postcode' => '郵便番号',
+        'addres' => '住所',
+        'phone' => '電話番号',
+        'email' => 'Email',
     ],
 
 ];

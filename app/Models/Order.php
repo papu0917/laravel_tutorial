@@ -18,13 +18,6 @@ class Order extends Model
 
     // TODO: バリデーションルールを別のところへ移す
     public static $rules = [
-        // 'fullname' => 'required',
-        // 'fee' => 'required',
-        // 'stock_name' => 'required',
-        // 'phonenumber' => 'required',
-        // 'streetadress' => 'required',
-        // 'email' => 'required',
-        // 'postalcode' => 'required',
         'name' => 'required|max:255',
         'postcode' => 'required|max:8',
         'addres' => 'required',
@@ -34,12 +27,17 @@ class Order extends Model
 
     public function stocks()
     {
-        return  $this->belongsToMany('App\\Models\Stock', 'order_stock', 'order_id', 'stock_id');
+        return  $this->belongsToMany('App\Models\Stock', 'order_stock', 'order_id', 'stock_id');
     }
 
     public function totalPrice()
     {
-        return  $this->belongsToMany('App\\Models\Stock', 'order_total_Prices', 'order_id', 'total_prices');
+        return  $this->belongsToMany('App\Models\Stock', 'order_total_Prices', 'order_id', 'total_prices');
+    }
+
+    public function usersId()
+    {
+        return $this->belongsToMany('App\Models\Stock', 'user_stock', 'stock_id', 'user_id');
     }
 
     public function completeOrder(Request $request)
