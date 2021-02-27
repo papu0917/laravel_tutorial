@@ -29,6 +29,7 @@
                     <td class="text-center">{{ Auth::user()->email }}</td>
                     <input type="hidden" name="email" value="{{ Auth::user()->email }}">
                 </tr>
+                <input type="hidden" name='user_id' value="{{ Auth::user()->id }}">
             </table>
         </div>
         <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
@@ -49,7 +50,7 @@
                                 <th>{{ $my_cart->stock->name }}</th>
                                 <th>{{ number_format($my_cart->stock->fee) }}円</th>
                                 <input type="hidden" name="stock_id[]" value="{{ $my_cart->stock->id }}">
-                                <input type="hidden" name="fee" value="{{ number_format($sum) }}">
+                                <input type="hidden" name="total_prices" value="{{ $sum }}">
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                             </tr>
                         @endforeach

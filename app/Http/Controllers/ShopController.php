@@ -59,12 +59,15 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart, Member $member)
     {
+        // dd($request);
         $order = new Member;
+        $order->user_id = $request->user_id;
         $order->name = $request->name;
         $order->postcode = $request->postcode;
         $order->addres = $request->addres;
         $order->phone = $request->phone;
         $order->email = $request->email;
+        $order->total_prices = $request->total_prices;
         $order->save();
 
         // $user_id = Auth::id();
