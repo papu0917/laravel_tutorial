@@ -31,4 +31,9 @@ class Stock extends Model
     {
         return $this->belongsToMany('App\Models\Order', 'order_total_prices');
     }
+
+    public function members()
+    {
+        return $this->belongsToMany('App\Models\Member', 'member__Xref_stock');
+    }
 }
