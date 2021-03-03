@@ -19,16 +19,21 @@ class Stock extends Model
     );
 
     protected $fillable = [
-        'fee',
+        'name', 'email', 'password', 'addres', 'phone', 'postcode', 'stock_id', 'user_id',
     ];
 
     public function orders()
     {
-        return $this->belongsToMany('App\Models\Order', 'order_stock_fee');
+        return $this->belongsToMany('App\Models\Order', 'order_stock');
     }
 
-    public function users()
+    public function orderPrices()
     {
-        return $this->belongsToMany('App\User', 'order_stock');
+        return $this->belongsToMany('App\Models\Order', 'order_total_prices');
+    }
+
+    public function members()
+    {
+        return $this->belongsToMany('App\Models\Member', 'member__Xref_stock');
     }
 }

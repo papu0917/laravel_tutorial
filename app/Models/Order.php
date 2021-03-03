@@ -12,19 +12,12 @@ class Order extends Model
     ];
 
     protected $fillable = [
-        'name', 'postcode', 'addres', 'phone', 'email', 'stock_id', 'fee',
+        'name', 'postcode', 'addres', 'phone', 'email', 'stock_id', 'total_prices',
     ];
 
 
     // TODO: バリデーションルールを別のところへ移す
     public static $rules = [
-        // 'fullname' => 'required',
-        // 'fee' => 'required',
-        // 'stock_name' => 'required',
-        // 'phonenumber' => 'required',
-        // 'streetadress' => 'required',
-        // 'email' => 'required',
-        // 'postalcode' => 'required',
         'name' => 'required|max:255',
         'postcode' => 'required|max:8',
         'addres' => 'required',
@@ -34,12 +27,20 @@ class Order extends Model
 
     public function stocks()
     {
-        return  $this->belongsToMany('App\\Models\Stock', 'order_stock');
+        return  $this->belongsToMany('App\Models\Stock', 'order_stock', 'order_id', 'stock_id');
     }
 
+    public function totalPrice()
+    {
+        return  $this->belongsToMany('App\Models\Stock', 'order_total_Prices', 'order_id', 'total_prices');
+    }
 
+    public function usersId()
+    {
+        return $this->belongsToMany('App\Models\Stock', 'user_stock', 'stock_id', 'user_id');
+    }
 
-    public function completeOrder(Request $request): self
+    public function completeOrder(Request $request)
     {
         $order = new Order;
         $order->name = $request->name;
@@ -49,7 +50,6 @@ class Order extends Model
         $order->email = $request->email;
         $order->save();
         $order->stocks()->attach($request->stock_id);
-
-        return $order;
+        $order->totalPrice()->attach($request->total_prices);
     }
 }
