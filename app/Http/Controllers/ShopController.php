@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\Member;
 use App\Models\Order;
 use App\User;
+use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Thanks;
@@ -59,7 +60,10 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart, Member $member)
     {
-        $completeorder = $member->completeOrder($request);
+        DB::transaction(function () use ($request, $member) {
+            $completeorder = $member->completeOrder($request);
+        });
+
         $checkout_info = $cart->checkoutCart();
 
         //　デプロイ後のエラー箇所
