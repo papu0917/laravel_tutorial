@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Models\Stock;
 use App\Models\Order;
 use App\Models\Cart;
+use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Thanks;
@@ -66,8 +67,9 @@ class ShopController extends Controller
     {
         // TODO: トランザクション調べる
         $request->validate(Order::$rules);
-        // $totalPrice = $order->totalprice($request);
-        $completeOrder = $order->completeOrder($request);
+        DB::transaction(function () use ($request, $order) {
+            $completeOrder = $order->completeOrder($request);
+        });
         $checkout_info = $cart->checkoutCart();
 
         //　デプロイ後のエラー箇所
