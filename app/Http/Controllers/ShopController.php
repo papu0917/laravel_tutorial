@@ -60,9 +60,9 @@ class ShopController extends Controller
 
     public function checkout(Request $request, Cart $cart, Member $member)
     {
-        DB::transaction(function () use ($request, $member) {
-            $completeorder = $member->completeOrder($request);
-        });
+
+        $completeorder = $member->completeOrder($request);
+
 
         $checkout_info = $cart->checkoutCart();
 
