@@ -35,9 +35,9 @@ class HomeController extends Controller
         // if (Auth::attempt(['name' => $name, 'password' => $password])) {
         //     return redirect('home');
         // }
-        if ($user_id == 1) {
-            return view('guest/shop', compact('stocks'));
-        }
+        // if ($user_id == 2) {
+        //     return view('guest/shop', compact('stocks'));
+        // }
         return view('/shop', compact('stocks'));
     }
 }
