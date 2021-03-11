@@ -29,15 +29,15 @@ class HomeController extends Controller
         $stocks = Stock::Paginate(12);
         $user_id = Auth::id();
 
-        $name = 'ゲスト';
-        $password = 'guestpass';
+        // $name = 'ゲスト';
+        // $password = 'guestpass';
 
-        if (Auth::attempt(['name' => $name, 'password' => $password])) {
-            return redirect('home');
-        }
-        // if ($user_id == 3) {
-        //     return view('guest/shop', compact('stocks'));
+        // if (Auth::attempt(['name' => $name, 'password' => $password])) {
+        //     return redirect('home');
         // }
+        if ($user_id == 1) {
+            return view('guest/shop', compact('stocks'));
+        }
         return view('/shop', compact('stocks'));
     }
 }
