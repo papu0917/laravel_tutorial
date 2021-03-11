@@ -66,7 +66,6 @@ class ShopController extends Controller
     public function checkout(Request $request, Cart $cart, Order $order)
     {
         // TODO: トランザクション調べる
-        $request->validate(Order::$rules);
 
         $completeOrder = $order->completeOrder($request);
 
