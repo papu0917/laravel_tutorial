@@ -25,6 +25,7 @@ class ShopController extends Controller
     {
 
         $user_id = Auth::id();
+
         $data = $cart->showCart();
 
         return view('mycart', $data);

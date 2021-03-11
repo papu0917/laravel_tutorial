@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+    <div class="headder">
+        <div class="alert alert-danger m-2 text-center" role="alert">ご注文はまだ確定しておりません、お届け先・ご注文内容をご確認ください</div>
+        <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
+            ご注文内容・お届け先
+        </h1>
+    </div>
     <form action="{{ route('checkout') }}" method="POST" enctype="multipart/form-data">
         <div class="col-md-12">
             <table border=1 align="center" width="60%">
@@ -32,29 +38,30 @@
                 <input type="hidden" name='user_id' value="{{ Auth::user()->id }}">
             </table>
         </div>
-        <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
+        {{-- <h1 class="text-center font-weight-bold" style="color:#555555;  font-size:1.2em; padding:24px 0px;">
             ご注文内容
-        </h1>
+        </h1> --}}
         <div class="col-md-12">
             <div class="row">
-                <table class="table table-striped">
+                <table class="table table-hover" style="table-layout:fixed;">
                     <thead>
                         <tr>
                             <th width="50%">商品名</th>
-                            <th>金額</th>
+                            <th width="">数量</th>
+                            <th width="">金額</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($my_carts as $my_cart)
                             <tr>
                                 <th>{{ $my_cart->stock->name }}</th>
+                                <th>1</th>
                                 <th>{{ number_format($my_cart->stock->fee) }}円</th>
-                                <input type="hidden" name="stock_id[]" value="{{ $my_cart->stock->id }}">
                                 <input type="hidden" name="total_prices" value="{{ $sum }}">
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <th>削除する</th>
                             </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
