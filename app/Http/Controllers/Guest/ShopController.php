@@ -67,9 +67,9 @@ class ShopController extends Controller
     {
         // TODO: トランザクション調べる
         $request->validate(Order::$rules);
-        DB::transaction(function () use ($request, $order) {
-            $completeOrder = $order->completeOrder($request);
-        });
+
+        $completeOrder = $order->completeOrder($request);
+
         $checkout_info = $cart->checkoutCart();
 
         //　デプロイ後のエラー箇所
