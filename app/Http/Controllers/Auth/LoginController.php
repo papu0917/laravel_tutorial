@@ -42,12 +42,12 @@ class LoginController extends Controller
 
     public function guestLogin()
     {
-        $name = 'ゲスト';
-        $password = 'guestpass';
+        // $name = 'ゲスト';
+        // $password = 'guestpass';
 
-        if (Auth::attempt(['name' => $name, 'password' => $password])) {
-            return redirect('home');
-        }
+        // if (Auth::attempt(['name' => $name, 'password' => $password])) {
+        //     return redirect('home');
+        // }
     }
 
     // public function shop()
